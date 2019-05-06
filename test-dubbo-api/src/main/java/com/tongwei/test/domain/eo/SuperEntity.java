@@ -65,4 +65,6 @@ public class SuperEntity implements Serializable {
         this.updatedBy = updatedBy;
     }
 
-    public Date getUpdatedAt() { return updatedAt; }
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
