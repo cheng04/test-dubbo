@@ -68,3 +68,4 @@ public class SuperEntity implements Serializable {
     public Date getUpdatedAt() {
         return updatedAt;
     }
+}
