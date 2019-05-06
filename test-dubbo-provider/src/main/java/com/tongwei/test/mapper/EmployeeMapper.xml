@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--客户映射 指定到dao接口 -->
+<mapper namespace="com.tongwei.test.mapper.EmployeeMapper">
+    <resultMap type="com.tongwei.test.domain.dto.EmployeeDto" id="EmployeeDtoResult">
+        <result property="id" column="id" />
+        <result property="createdBy" column="created_by" />
+        <result property="createdAt" column="created_at" />
+        <result property="updatedBy" column="updated_by" />
+        <result property="updatedAt" column="updated_at" />
+    </resultMap>
+    <sql id="Base_Column_List">
+      id,      created_by,      created_at,      updated_by,      updated_at    </sql>
+    <select id="findList" resultType="com.tongwei.test.domain.eo.Employee">
+        SELECT <include refid="Base_Column_List"/> FROM employee WHERE dr=0
+    </select>
+    <insert id="batchInsert">
+        INSERT INTO employee
+        (        id,        created_by,        created_at,        updated_by,        updated_at)
+        VALUES
+        <foreach collection="eo" index="index" item="value" separator=",">
+            (            #{value.id},            #{value.createdBy},            #{value.createdAt},            #{value.updatedBy},            #{value.updatedAt})
+        </foreach>
+    </insert>
+    <update id="batchUpdate">
+        INSERT INTO employee
+        (        id,        created_by,        created_at,        updated_by,        updated_at)
+        VALUES
+        <foreach collection="eo" index="index" item="value" separator=",">
+            (            #{value.id},            #{value.createdBy},            #{value.createdAt},            #{value.updatedBy},            #{value.updatedAt})
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+            id=values(id),            created_by=values(created_by),            created_at=values(created_at),            updated_by=values(updated_by),            updated_at=values(updated_at)    </update>
+    <update id="deleteByIds">
+        UPDATE employee set dr=1 where id in
+        <foreach collection="pks" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+</mapper>

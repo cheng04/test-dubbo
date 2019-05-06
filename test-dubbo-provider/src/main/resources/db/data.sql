@@ -14,3 +14,5 @@ INSERT INTO product(id, name, price, tenant_id, created_by, updated_by, created_
 ('10', '榴莲', 990, null, null ,null, null, null, 0),
 ('11', '柚子', 291, null, null ,null, null, null, 0),
 ('12', '小番茄', 200, null, null ,null, null, null, 0);
+CREATE TABLE IF NOT EXISTS employee(
+    id int  not null primary key,    created_by varchar(255) not null ,    created_at datetime not null ,    updated_by varchar(255) not null ,    updated_at datetime not null );
