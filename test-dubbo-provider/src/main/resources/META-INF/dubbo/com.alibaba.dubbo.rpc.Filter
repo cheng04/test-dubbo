@@ -1,0 +1,3 @@
+exceptionFilter=com.tongwei.test.filter.ExceptionFilter
+dubboContextProviderFilter=com.tongwei.test.filter.DubboContextProviderFilter
+dubboContextConsumerFilter=com.tongwei.test.filter.DubboContextConsumerFilter
